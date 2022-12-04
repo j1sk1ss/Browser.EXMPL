@@ -1,19 +1,22 @@
-﻿using System.Windows.Controls;
+﻿using Browser.EXMPL.objects;
 
-namespace Browser.EXMPL.gui
-{
-    public static class NewWindow
-    {
-        public static TabItem GetNewTab()
-        {
-            var newTab = new TabItem {
-                Height = 20,
-                Width = 20,
-                FontSize = 14,
+namespace Browser.EXMPL.gui {
+    public static class NewWindow {
+        public static ExtendedTab GetNewTab() {
+            var tab = new ExtendedTab {
                 Header = "Новая вкладка",
             };
-            
-            return null;
+            tab.Content = new Content(tab);
+            return tab;
+        }
+        
+        public static ExtendedTab GetPlus() {
+            var tab = new ExtendedTab {
+                Header = "+",
+                IsPlaceholder = true
+            };
+
+            return tab;
         }
     }
 }
