@@ -6,4 +6,8 @@
         <UseWPF>true</UseWPF>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="EO.WebBrowser" Version="23.0.18" />
+    </ItemGroup>
+
 </Project>

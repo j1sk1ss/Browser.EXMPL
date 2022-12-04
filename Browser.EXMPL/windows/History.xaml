@@ -1,0 +1,14 @@
+﻿<Window x:Class="Browser.EXMPL.windows.History"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:Browser.EXMPL.windows"
+        mc:Ignorable="d"
+        Title="History" Height="450" Width="800">
+    <Grid>
+        <ScrollViewer>
+            <Label x:Name="HistoryLabel"></Label>
+        </ScrollViewer>
+    </Grid>
+</Window>
