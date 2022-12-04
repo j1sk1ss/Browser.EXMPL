@@ -2,9 +2,53 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using Browser.EXMPL.data;
 
 namespace Browser.EXMPL.gui {
     public static class NewWindow {
+        public static TabItem GetEmptyTab() {
+            return new TabItem {
+                Height = 20,
+                Width = 20,
+                FontSize = 14,
+                Header = "+"
+            };
+        }
+
+        public static TabItem GetHistoryTab(int number, MainWindow mainWindow) {
+            var newTab = new TabItem {
+                Height = 20,
+                Width = 120,
+                FontSize = 14,
+                Header = "История"
+            };
+
+            var scroll = new ScrollViewer {
+                Content = new Label().Content = string.Join("\n", LocalData.History)
+            };
+
+            var newGrid = new Grid
+            {
+                Name = $"grid_{number}"
+            };
+            newGrid.Children.Add(scroll);
+            
+            var deletePageButton = new Button {
+                Height = 23,
+                Width = 23,
+                HorizontalAlignment = HorizontalAlignment.Right,
+                VerticalAlignment = VerticalAlignment.Top,
+                Margin = new Thickness(0,10,20,0),
+                Content = "-"
+            };
+            deletePageButton.Click += mainWindow.DeletePage;
+            newGrid.Children.Add(deletePageButton);
+
+            newTab.Content = newGrid;
+            
+            return newTab;
+        }
+        
         public static TabItem GetNewTab(int number, MainWindow mainWindow) {
             var newTab = new TabItem {
                 Height = 20,
@@ -41,16 +85,6 @@ namespace Browser.EXMPL.gui {
             };
             web.Navigate("https://google.com");
             newGrid.Children.Add(web);
-            
-            var button = new Button {
-                Height = 23,
-                Width = 20,
-                HorizontalAlignment = HorizontalAlignment.Left,
-                VerticalAlignment = VerticalAlignment.Top,
-                Margin = new Thickness(0,10,0,0),
-                Content = "+"
-            };
-            button.Click += mainWindow.NewPage;
             
             var previousPageButton = new Button {
                 Name = $"pb_{number}",
@@ -95,9 +129,8 @@ namespace Browser.EXMPL.gui {
                 Margin = new Thickness(0,10,6,0),
                 Content = ":"
             };
-            settingsButton.Click += MainWindow.ShowHistory;
-            
-            newGrid.Children.Add(button);
+            settingsButton.Click += mainWindow.ShowHistory;
+
             newGrid.Children.Add(previousPageButton);
             newGrid.Children.Add(deletePageButton);
             newGrid.Children.Add(searchButton);

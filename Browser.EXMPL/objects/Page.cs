@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 
-namespace Browser.EXMPL.objects
-{
-    public class Page
-    {
+namespace Browser.EXMPL.objects {
+    public class Page {
         public Page() {
             LocalHistory = new List<string>{"","",""};
         }

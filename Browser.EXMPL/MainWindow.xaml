@@ -15,7 +15,8 @@
                     Width="800"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Margin="0,0,0,0">
+                    Margin="0,0,0,0"
+                    SelectionChanged="OnPageChanged">
         </TabControl>
     </Grid>
 </Window>
